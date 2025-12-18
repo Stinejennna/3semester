@@ -1,0 +1,47 @@
+<div class="auction-detail-container" *ngIf="lot; else loadingTpl">
+  <h1 class="auction-title">{{ lot?.title || lot?.Title }}</h1>
+  <p class="countdown">Tid tilbage: {{ countdown }}</p>
+
+  <div class="auction-content">
+    <!-- Venstre: billedgalleri -->
+    <div class="image-gallery">
+      <ng-container *ngIf="(lot?.images || lot?.Images)?.length; else placeholderImage">
+        <img *ngFor="let img of (lot?.images || lot?.Images)"
+             [src]="img.url || img.Url"
+             alt="Lot billede" />
+      </ng-container>
+      <ng-template #placeholderImage>
+        <img src="assets/images/placeholder.png" alt="Ingen billeder" />
+      </ng-template>
+    </div>
+
+    <!-- Højre: detaljer og bud -->
+    <div class="details">
+      <p><strong>Beskrivelse:</strong> {{ lot?.description || lot?.Description }}</p>
+      <p><strong>Vurderet værdi:</strong> {{ (lot?.estimatedValue || lot?.EstimatedValue) | currencyDkk }}</p>
+      <p><strong>Startpris:</strong> {{ (lot?.startPrice || lot?.StartPrice) | currencyDkk }}</p>
+      <p><strong>Nuværende bud:</strong> {{ (lot?.currentPrice || lot?.CurrentPrice) | currencyDkk }}</p>
+
+      <div class="place-bid">
+        <input type="number" [(ngModel)]="newBid" placeholder="Dit bud" />
+        <button (click)="placeBid()" class="btn btn-primary">Bud</button>
+      </div>
+    </div>
+  </div>
+
+  <h2>Budhistorik</h2>
+  <ul class="bid-history">
+    <li *ngFor="let bid of sortedBidHistory">
+      <span class="bid-user">{{ bid.userName || bid.UserName || 'Bruger' }}:</span>
+      <span class="bid-amount">{{ (bid.amount || bid.Amount) | currencyDkk }}</span>
+      <span class="bid-time">{{ (bid.timeStamp || bid.TimeStamp) | date:'short' }}</span>
+    </li>
+    <li *ngIf="sortedBidHistory.length === 0" class="no-bids">Ingen bud endnu.</li>
+  </ul>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="auction-detail-container loading">
+    <p>Indlæser auktion...</p>
+  </div>
+</ng-template>

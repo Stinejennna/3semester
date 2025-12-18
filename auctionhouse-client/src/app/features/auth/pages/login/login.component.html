@@ -1,0 +1,32 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="login()">
+    <div class="form-group">
+      <label>Email eller brugernavn</label>
+      <input
+        type="text"
+        [(ngModel)]="identifier"
+        name="identifier"
+        placeholder="Email eller brugernavn"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Indtast password"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+
+    <p>Har du ikke en konto? <a routerLink="/register">Opret en her</a></p>
+  </form>
+</div>

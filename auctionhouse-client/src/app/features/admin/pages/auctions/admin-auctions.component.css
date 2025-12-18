@@ -1,0 +1,196 @@
+.admin-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: #4f9aff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #3c83e0;
+}
+
+.btn-secondary {
+  background: #6c6c6c;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: #575757;
+}
+
+.btn-delete {
+  background: #f04e3e;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background: #c0392b;
+}
+
+.btn-warning {
+  background: #f1c40f;
+  color: #000;
+}
+
+.btn-warning:hover {
+  background: #d4ac0d;
+}
+
+.auction-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.auction-card {
+  background: #bfa15e;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auction-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.status {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  background: #777;
+  color: #fff;
+}
+
+.status.active {
+  background: #2ecc71;
+  color: #fff;
+}
+
+.card-body p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+}
+
+/* ================= Modal ================= */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modal {
+  background: #bfa15e;
+  padding: 24px;
+  border-radius: 16px;
+  width: 450px;
+  max-width: 95%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  animation: slideDown 0.3s ease;
+}
+
+.modal h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.modal input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 4px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background: #fff;
+  color: #000000;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

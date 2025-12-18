@@ -1,0 +1,55 @@
+<!-- Hero / Intro Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Velkommen til Smith & Co.</h1>
+    <p>70 års ekspertise inden for kunst, antikviteter og sjældne samlerobjekter – nu online.</p>
+    <div class="hero-cta">
+      <a routerLink="/auctions" class="btn btn-primary">Se Auktioner</a>
+      <a routerLink="/register" class="btn btn-secondary">Opret Konto</a>
+    </div>
+  </div>
+</section>
+
+<!-- How it works / Steps Section -->
+<section class="how-it-works">
+  <h2>Sådan fungerer det</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>1. Opret konto</h3>
+      <p>Registrer dig hurtigt og sikkert for at begynde at byde.</p>
+    </div>
+    <div class="step">
+      <h3>2. Find dine auktioner</h3>
+      <p>Se kommende auktioner, udforsk varer og gem favoritter.</p>
+    </div>
+    <div class="step">
+      <h3>3. Afgiv bud</h3>
+      <p>Byd online – vores system sørger for maxbud og tidsforlængelse.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Featured / Preview Auctions Section -->
+<section class="featured-auctions">
+  <h2>Udvalgte auktioner</h2>
+  <div class="auction-grid">
+    <!-- Her kan vi loope over 3-4 auktioner som preview -->
+    <app-auction-card *ngFor="let auction of featuredAuctions" [auction]="auction"></app-auction-card>
+  </div>
+</section>
+
+<!-- Gamification / Badges Preview -->
+<section class="gamification">
+  <h2>Opnå belønninger når du byder</h2>
+  <p>Samle badges, stig i rang og bliv en top-bidder!</p>
+  <div class="badge-preview">
+    <app-badge *ngFor="let badge of previewBadges" [badge]="badge"></app-badge>
+  </div>
+</section>
+
+<!-- Footer Call-to-Action -->
+<section class="footer-cta">
+  <p>Er du klar til at starte din digitale auktionsrejse?</p>
+  <a routerLink="/register" class="btn btn-primary">Opret Konto Nu</a>
+</section>
+

@@ -1,0 +1,38 @@
+<div class="register-container">
+  <h2>Opret Konto</h2>
+
+  <form (ngSubmit)="register()" #registerForm="ngForm" novalidate>
+    <div class="form-group">
+      <label for="fullname">Navn</label>
+      <input id="fullname" type="text" [(ngModel)]="fullname" name="name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="username">Brugernavn</label>
+      <input id="username" type="text" [(ngModel)]="username" name="username" required />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" [(ngModel)]="email" name="email" required />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" type="password" [(ngModel)]="password" name="password" required />
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Bekræft Password</label>
+      <input id="confirmPassword" type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required />
+    </div>
+
+    <div *ngIf="submitted && errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <button type="submit" class="btn btn-primary">Opret Konto</button>
+  </form>
+
+  <p class="login-link">
+    Har du allerede en konto? <a routerLink="/login">Log ind her</a>
+  </p>
+</div>

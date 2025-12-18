@@ -1,0 +1,47 @@
+<div class="profile-container" *ngIf="user; else loading">
+  <h1>Hej, {{ user.fullName }}!</h1>
+
+  <section class="profile-card">
+    <h2>Brugerinformation</h2>
+    <p><strong>Brugernavn:</strong> {{ user.userName }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Oprettet:</strong> {{ user.createdAt | date:'mediumDate' }}</p>
+    <button class="btn logout" (click)="logout()">Log ud</button>
+  </section>
+
+  <section class="stats-card">
+    <h2>Din statistik</h2>
+    <div class="stats-grid">
+      <div class="stat">
+        <h3>{{ stats?.totalBids ?? 0 }}</h3>
+        <p>Bud afgivet</p>
+      </div>
+      <div class="stat">
+        <h3>{{ stats?.wonAuctions ?? 0 }}</h3>
+        <p>Vundne auktioner</p>
+      </div>
+      <div class="stat">
+        <h3>{{ (stats?.totalWonValue || stats?.TotalWonValue || 0) | currencyDkk }}</h3>
+        <p>Samlet værdi vundet</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="badges-card" *ngIf="stats?.badges?.length">
+    <h2>Dine badges</h2>
+
+    <div class="badges-grid">
+      <ng-container *ngFor="let badge of stats.badges">
+        <div class="badge-with-icon" [ngClass]="getBadgeClass(badge)">
+          <img [src]="getBadgeIcon(badge)" alt="{{ badge }}" />
+          <span>{{ badge }}</span>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+
+</div>
+
+<ng-template #loading>
+  <p>Indlæser brugerdata...</p>
+</ng-template>

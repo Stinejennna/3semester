@@ -1,0 +1,43 @@
+<div class="my-bids-container">
+  <h2>Mine Bud</h2>
+
+  <section class="bids-section">
+    <h3>Aktive Bud</h3>
+    <p *ngIf="loadingActive">Indlæser aktive bud...</p>
+    <p *ngIf="!loadingActive && activeLots.length === 0">Du har ingen aktive bud.</p>
+
+    <div class="bids-card" *ngFor="let lot of activeLots">
+      <div class="card-row">
+        <img [src]="lot.displayImage" alt="Vare billede" />
+
+        <div class="card-info">
+          <h4>{{ lot.displayTitle }}</h4>
+          <p>Auktion: {{ lot.displayAuction }}</p>
+          <p>Dit bud: {{ lot.displayPrice | currencyDkk }}</p>
+          <p *ngIf="lot.isWinningBid || lot.IsWinningBid" class="winning-text">Lige nu vinder ★</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bids-section">
+    <h3>Vundne Auktioner</h3>
+    <p *ngIf="loadingWon">Indlæser vundne auktioner...</p>
+    <p *ngIf="!loadingWon && wonLots.length === 0">Du har ingen vundne auktioner endnu.</p>
+
+    <div class="bids-card" *ngFor="let lot of wonLots">
+      <div class="card-row">
+        <img [src]="lot.displayImage" alt="Vare billede" />
+
+        <div class="card-info">
+          <h4>{{ lot.displayTitle }}</h4>
+          <p>Auktion: {{ lot.displayAuction }}</p>
+          <p>Slutpris: {{ lot.displayPrice | currencyDkk }}</p>
+          <p class="won-badge">Vundet</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+</div>

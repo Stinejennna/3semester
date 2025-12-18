@@ -1,0 +1,73 @@
+<div class="admin-container">
+  <div class="header">
+    <h1>Admin · Auktioner</h1>
+    <button routerLink="/admin/auctions/create" class="btn btn-primary">
+      + Opret auktion
+    </button>
+  </div>
+
+  <div class="auction-grid">
+    <div class="auction-card" *ngFor="let auction of auctions">
+      <div class="card-header">
+        <h2>{{ auction.title }}</h2>
+        <span class="status" [class.active]="isActive(auction)">
+          {{ isActive(auction) ? 'Aktiv' : 'Afsluttet' }}
+        </span>
+      </div>
+
+      <div class="card-body">
+        <p><strong>Start:</strong> {{ auction.startDate | date:'short' }}</p>
+        <p><strong>Slut:</strong> {{ auction.endDate | date:'short' }}</p>
+        <p><strong>Lots:</strong> {{ auction.lots?.length ?? 0 }}</p>
+      </div>
+
+      <div class="actions">
+        <!-- Rediger auktion -->
+        <button (click)="openEditModal(auction)" class="btn btn-secondary">
+          Rediger
+        </button>
+
+        <!-- Slet auktion -->
+        <button (click)="deleteAuction(auction.id)" class="btn btn-delete">
+          Slet
+        </button>
+
+        <!-- Luk auktion -->
+        <button (click)="closeAuction(auction)" class="btn btn-warning">
+          Luk auktion
+        </button>
+      </div>
+    </div>
+
+    <p *ngIf="auctions.length === 0" class="empty">
+      Ingen auktioner fundet.
+    </p>
+  </div>
+</div>
+
+<!-- ================= Edit Auction Modal ================= -->
+<div class="modal-backdrop" *ngIf="editingAuction">
+  <div class="modal">
+    <h2>Rediger Auktion</h2>
+
+    <label>
+      Titel:
+      <input [(ngModel)]="editForm.title" type="text" />
+    </label>
+
+    <label>
+      Startdato:
+      <input [(ngModel)]="editForm.startDate" type="datetime-local" />
+    </label>
+
+    <label>
+      Slutdato:
+      <input [(ngModel)]="editForm.endDate" type="datetime-local" />
+    </label>
+
+    <div class="modal-actions">
+      <button (click)="saveEdit()" class="btn btn-primary">Gem</button>
+      <button (click)="closeEditModal()" class="btn btn-secondary">Annuller</button>
+    </div>
+  </div>
+</div>

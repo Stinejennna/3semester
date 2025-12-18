@@ -1,0 +1,32 @@
+<div class="auction-list-container">
+  <h1 class="auction-list-title">Aktive Auktioner</h1>
+
+  <!-- Søg og sort -->
+  <div class="auction-controls">
+    <input type="text" placeholder="Søg..." [(ngModel)]="search" />
+    <select [(ngModel)]="sortBy">
+      <option value="">Sorter efter</option>
+      <option value="title">Titel</option>
+      <option value="price">Pris</option>
+    </select>
+  </div>
+
+  <!-- Grid med kort -->
+  <div class="auction-grid">
+    <div class="auction-card" *ngFor="let auction of filteredAuctions">
+      <img [src]="auction.mainImage" alt="Lot billede" class="lot-image" />
+
+      <div class="auction-info">
+        <h2>{{ auction.title }}</h2>
+        <p><strong>Nuvarande bud:</strong> {{ auction.currentPrice | currency:'DKK' }}</p>
+        <p><strong>Startbud:</strong> {{ auction.startPrice | currency:'DKK' }}</p>
+        <p class="countdown">{{ auction.countdown }}</p>
+        <button [routerLink]="['/auction', auction.id]" class="btn btn-primary">
+          Se detaljer
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <p *ngIf="filteredAuctions.length === 0" class="empty">Ingen auktioner fundet.</p>
+</div>

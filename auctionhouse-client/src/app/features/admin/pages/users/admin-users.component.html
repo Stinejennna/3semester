@@ -1,0 +1,21 @@
+<div class="admin-container">
+  <h1>Admin: Brugere</h1>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Søg brugere..." [(ngModel)]="search" />
+  </div>
+
+  <div class="user-list">
+    <div class="user-card" *ngFor="let user of filteredUsers">
+      <div class="user-info">
+        <p><strong>{{ user.userName }}</strong></p>
+        <p>{{ user.email }}</p>
+      </div>
+      <div class="user-actions">
+        <button (click)="deleteUser(user.id)" class="btn btn-delete">Slet</button>
+      </div>
+    </div>
+
+    <p *ngIf="filteredUsers.length === 0" class="no-users">Ingen brugere fundet.</p>
+  </div>
+</div>

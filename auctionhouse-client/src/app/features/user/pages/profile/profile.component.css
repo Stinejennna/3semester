@@ -1,0 +1,108 @@
+.profile-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #bfa15e;
+  margin-bottom: 2rem;
+}
+
+section {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-card p {
+  margin: 0.5rem 0;
+}
+
+.logout {
+  background-color: #bfa15e;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout:hover {
+  background-color: #a88c46;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stat {
+  flex: 1 1 150px;
+  text-align: center;
+}
+
+.stat h3 {
+  font-size: 2rem;
+  color: #bfa15e;
+  margin-bottom: 0.5rem;
+}
+
+.badges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: #f3e2b8; /* fallback */
+  color: #7a5e2e;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.badge-gold {
+  background-color: #fff7e6;
+  border: 1px solid #ffd700;
+  color: #b8860b;
+}
+
+.badge-silver {
+  background-color: #f5f5f5;
+  border: 1px solid #c0c0c0;
+  color: #708090;
+}
+
+.badge-bronze {
+  background-color: #fff0e6;
+  border: 1px solid #cd7f32;
+  color: #8b4513;
+}
+
+.badge-default {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  color: #666;
+}
+
+.badge-with-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+
