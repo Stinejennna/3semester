@@ -1,0 +1,12 @@
+﻿## Setup (SQL server Express)
+
+1. Clone repository
+2. Ensure SQL Server is running
+3. Run:
+   dotnet ef database update
+4. Run project
+
+
+Test SQL Server in Powershell
+
+sqlcmd -S .\SQLEXPRESS -E -C

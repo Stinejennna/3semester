@@ -1,0 +1,39 @@
+﻿http://localhost:5098/
+
+AuthController (api/Auth)
+POST	/register
+POST	/login
+POST	/refresh
+
+AdminController (api/Admin) [Authorize(Roles = "Admin")]
+POST	/CreateAuction
+PUT		/EditAuction/{auctionId}
+POST	/CloseAuction/{auctionId}
+POST	/UploadLotImages/{lotId}
+GET		/Payments
+
+BidsController (api/Bids) [Authorize]
+POST	/{lotId}
+GET		/{lotId}/history
+
+LotsController (api/Lots) [Authorize]
+POST	/{lotId}/upload-image	
+GET		/search	
+GET		/upcoming	
+GET		/active
+GET		/recent	
+GET		/{lotId}/historyWithLot	
+GET		/{lotId}
+
+PaymentsController (api/Payments) [Authorize]
+POST	/checkout
+POST	/webhook [AllowAnonymous]
+
+StatsController (api/Stats)
+GET		/leaderboard
+
+UsersController (api/users/me) [Authorize]
+GET		/bids	
+GET		/active-auctions
+GET		/won-auctions
+GET		/stats
